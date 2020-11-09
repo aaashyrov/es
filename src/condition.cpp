@@ -19,6 +19,24 @@ void Conjunction::clear() {
   vars_.clear();
 }
 
+bool Conjunction::is_true(const std::vector<Variable> &facts) {
+  for (auto &var:vars_) {
+    if (var.is_unknown()) {
+      var.get();
+    }
+
+    for (const auto &fact:facts) {
+      if (var.name() != fact.name()) {
+        continue;
+      }
+      if (var.value().id != fact.value().id) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
 void Condition::push(const Conjunction &conjunction) {
   conjunctions_.emplace_back(conjunction);
 }
@@ -29,4 +47,8 @@ void Condition::pop() {
 
 void Condition::clear() {
   conjunctions_.clear();
+}
+
+std::vector<Conjunction> &Condition::conjunctions() {
+  return conjunctions_;
 }

@@ -8,6 +8,7 @@ include_directories(
 set(HDRS
         include/rule.hpp
         include/variable.hpp
+        include/algorithm.hpp
         include/condition.hpp
         )
 
@@ -15,6 +16,7 @@ set(SRCS
         src/rule.cpp
         src/variable.cpp
         src/condition.cpp
+        src/algorithm.cpp
         )
 
 add_library(eslib

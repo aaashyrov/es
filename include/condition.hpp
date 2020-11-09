@@ -16,7 +16,7 @@ class Conjunction {
   void pop();
   void clear();
   void push(const Variable &variable);
-
+  bool is_true(const std::vector<Variable>& facts);
  protected:
   std::vector<Variable> vars_;
 };
@@ -28,8 +28,8 @@ class Condition {
 
   void pop();
   void clear();
+  std::vector<Conjunction> &conjunctions();
   void push(const Conjunction &conjunction);
-
  protected:
   std::vector<Conjunction> conjunctions_;
 };
