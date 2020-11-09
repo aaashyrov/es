@@ -1,0 +1,59 @@
+{
+  "variables": [
+    {
+      "name": "sostoyanie gorla",
+      "values": [
+        {
+          "id": 1,
+          "description": "красное"
+        },
+        {
+          "id": 2,
+          "description": "не красное"
+        }
+      ]
+    },
+    {
+      "name": "nasmork",
+      "values": [
+        {
+          "id": 1,
+          "description": "da"
+        },
+        {
+          "id": 2,
+          "description": "net"
+        }
+      ]
+    },
+    {
+      "name": "kashel",
+      "values": [
+        {
+          "id": 1,
+          "description": "suhoy"
+        },
+        {
+          "id": 2,
+          "description": "mokryi"
+        }
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "if": [
+        [
+          {
+            "name": "sostoyanie gorla",
+            "value": 1
+          }
+        ]
+      ],
+      "then": {
+        "name": "kashel",
+        "value": 1
+      }
+    }
+  ]
+}
