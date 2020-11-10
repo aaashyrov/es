@@ -8,4 +8,10 @@
 #include <rapidjson/document.h>
 #include <rapidjson/rapidjson.h>
 
+#include <rule.hpp>
+#include <variable.hpp>
+
+std::vector<Rule> loadRulesFromFile(const std::string &filename);
+std::vector<Variable> loadVariablesFromFile(const std::string &filename);
+
 #endif //ES_INCLUDE_UTIL_HPP_

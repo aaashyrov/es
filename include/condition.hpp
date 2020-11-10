@@ -17,6 +17,7 @@ class Conjunction {
   void clear();
   void push(const Variable &variable);
   bool is_true(const std::vector<Variable>& facts);
+
  protected:
   std::vector<Variable> vars_;
 };

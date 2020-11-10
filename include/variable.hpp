@@ -8,33 +8,35 @@
 #include <vector>
 #include <iostream>
 
-struct Value {
-  static const unsigned int UNKNOWN;
-
-  size_t id;
-  std::string description;
-};
-
-std::ostream &operator<<(std::ostream &os, const Value &value);
+#include <rapidjson/document.h>
+#include <rapidjson/rapidjson.h>
+#include <map>
 
 class Variable {
  public:
+  static const unsigned int UNKNOWN;
 
-  Variable(const std::string &name, const std::vector<std::string> &descriptions, size_t val = Value::UNKNOWN);
+  Variable();
+  Variable(const std::string &name, const std::map<size_t, std::string> &descriptions, size_t val = Variable::UNKNOWN);
   ~Variable() = default;
 
   void get();
+  size_t value() const;
   bool is_unknown() const;
-  const Value &value() const;
   const std::string &name() const;
-  bool is_known(const std::vector<Variable>& facts) const;
-  friend std::ostream &operator<<(std::ostream &os, const Variable &value);
+  bool copyFrom(const rapidjson::Value &value);
+  bool is_known(const std::vector<Variable> &facts) const;
+
+  friend std::ostream &operator<<(std::ostream &os, const Variable &variable);
+
  protected:
 
-  Value value_;
-  std::string name_;
-  std::vector<std::string> descriptions_;
-};
+  bool getValue(const rapidjson::Value &jVal);
+  bool getValues(const rapidjson::Value &jVar);
 
+  size_t value_;
+  std::string name_;
+  std::map<size_t, std::string> descriptions_;
+};
 
 #endif //ES_INCLUDE_VARIABLE_HPP_

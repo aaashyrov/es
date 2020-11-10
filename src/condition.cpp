@@ -29,7 +29,7 @@ bool Conjunction::is_true(const std::vector<Variable> &facts) {
       if (var.name() != fact.name()) {
         continue;
       }
-      if (var.value().id != fact.value().id) {
+      if (var.value() != fact.value()) {
         return false;
       }
     }

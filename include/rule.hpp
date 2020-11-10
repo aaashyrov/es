@@ -9,11 +9,15 @@
 
 class Rule {
  public:
+  Rule();
   Rule(const Condition &condition, const Variable &conclusion);
   ~Rule() = default;
 
-  bool is_simple();
   const Variable& conclusion();
+  bool copyFrom(const rapidjson::Value& jVal);
+
+  friend std::ostream & operator<<(std::ostream& os, const Rule& rule);
+
   bool is_true(const std::vector<Variable>& known_vars);
  private:
   Condition condition_;

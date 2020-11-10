@@ -12,32 +12,6 @@
           "description": "не красное"
         }
       ]
-    },
-    {
-      "name": "nasmork",
-      "values": [
-        {
-          "id": 1,
-          "description": "da"
-        },
-        {
-          "id": 2,
-          "description": "net"
-        }
-      ]
-    },
-    {
-      "name": "kashel",
-      "values": [
-        {
-          "id": 1,
-          "description": "suhoy"
-        },
-        {
-          "id": 2,
-          "description": "mokryi"
-        }
-      ]
     }
   ],
   "rules": [
@@ -46,13 +20,13 @@
         [
           {
             "name": "sostoyanie gorla",
-            "value": 1
+            "id": 1
           }
         ]
       ],
       "then": {
         "name": "kashel",
-        "value": 1
+        "id": 1
       }
     }
   ]
