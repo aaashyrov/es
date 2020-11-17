@@ -20,13 +20,13 @@
         [
           {
             "name": "sostoyanie gorla",
-            "id": 1
+            "value": 1
           }
         ]
       ],
       "then": {
         "name": "kashel",
-        "id": 1
+        "value": 1
       }
     }
   ]

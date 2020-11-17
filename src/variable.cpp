@@ -92,8 +92,11 @@ bool Variable::copyFrom(const rapidjson::Value &value) {
   if (value.HasMember("value")) {
     return getValue(value);
   }
+  if (value.HasMember("values")) {
+    return getValues(value);
+  }
 
-  return getValues(value);
+  return false;
 }
 
 bool Variable::getValue(const rapidjson::Value &jVal) {
@@ -115,19 +118,19 @@ bool Variable::getValues(const rapidjson::Value &jVar) {
     return false;
   }
   for (const auto &jVal:jVar.GetObject()["values"].GetArray()) {
-    if (jVal.HasMember("id")) {
+    if (not jVal.HasMember("id")) {
       std::cerr << "value has no id member" << std::endl;
       return false;
     }
-    if (jVal["id"].IsUint()) {
+    if (not jVal["id"].IsUint()) {
       std::cerr << "id value is not uint" << std::endl;
       return false;
     }
-    if (jVal.HasMember("description")) {
+    if (not jVal.HasMember("description")) {
       std::cerr << "value has no description member" << std::endl;
       return false;
     }
-    if (jVal["description"].IsString()) {
+    if (not jVal["description"].IsString()) {
       std::cerr << "description value is not string" << std::endl;
       return false;
     }
